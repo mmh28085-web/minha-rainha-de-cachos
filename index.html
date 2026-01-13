@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Minha Rainha de Cachos ❤️</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body { background: #0d0d0d; color: #fff; overflow-x: hidden; }/* INTRO */
+#intro {
+  position: fixed; inset: 0;
+  background: radial-gradient(circle, #1a1a1a, #000);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+  z-index: 10;
+  animation: fadeIn 1s ease;
+}
+#countdown { font-size: 4rem; color: #ff4d6d; }
+
+/* LOGIN */
+#login {
+  display: none; flex-direction: column; gap: 15px;
+  align-items: center; justify-content: center;
+  height: 100vh;
+}
+input, button {
+  padding: 12px 20px; border-radius: 25px;
+  border: none; outline: none;
+}
+input { width: 220px; text-align: center; }
+button {
+  background: #ff4d6d; color: #fff;
+  cursor: pointer; transition: .3s;
+}
+button:hover { transform: scale(1.05); }
+
+/* SITE */
+#site { display: none; padding: 20px; }
+
+h1 { text-align: center; color: #ff4d6d; margin-bottom: 20px; }
+
+.folders {
+  display: flex; gap: 20px;
+  overflow-x: auto; padding: 20px;
+  scroll-snap-type: x mandatory;
+}
+.folder {
+  min-width: 280px; height: 180px;
+  background: linear-gradient(135deg, #1f1f1f, #2a2a2a);
+  border-radius: 20px;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+  scroll-snap-align: start;
+  box-shadow: 0 0 20px rgba(255,77,109,.2);
+  transition: .4s;
+}
+.folder:hover { transform: translateY(-5px); }
+
+.folder span { font-size: 2rem; }
+
+/* TEXTO */
+.text {
+  max-width: 700px;
+  margin: 40px auto;
+  line-height: 1.8;
+  text-align: center;
+  color: #f1f1f1;
+  animation: fadeInUp 1.5s ease;
+}
+
+/* ANIMAÇÕES */
+@keyframes fadeIn { from {opacity:0} to {opacity:1} }
+body::before {
+  content: '❤️';
+  position: fixed;
+  font-size: 20px;
+  animation: float 6s linear infinite;
+  opacity: 0.2;
+}
+@keyframes float {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-10vh); }
+}
+
+@keyframes fadeInUp { from {opacity:0; transform: translateY(30px)} to {opacity:1; transform: translateY(0)} }
+
+  </style>
+</head>
+<body>  <!-- INTRO -->  <div id="intro">
+    <div id="countdown">5</div>
+  </div>  <!-- LOGIN -->  <div id="login">
+    <h2>Digite a senha ❤️</h2>
+    <input type="password" id="password" placeholder="Senha" />
+    <button onclick="checkPassword()">Entrar</button>
+  </div>  <!-- SITE -->  <div id="site">
+    <h1>Feliz Aniversário, Minha Rainha de Cachos 🎉❤️</h1><div class="folders">
+  <div class="folder"><span>⏳</span><p>Desde 17/10/2021</p></div>
+  <div class="folder"><span>📂</span><p>Fotos (até 50)</p></div>
+  <div class="folder"><span>📹</span><p>Vídeos (até 10)</p></div>
+  
+  <div class="folder"><span>💌</span><p>Cartas</p></div>
+</div>
+
+<div class="text">
+  <p style="font-size:1.1rem;color:#ffb3c1;">Estamos juntos desde <strong>17 de outubro de 2021</strong>. Cada segundo ao seu lado vale uma eternidade. 💖</p><br />
+  <p>
+    Hoje o mundo acordou mais bonito porque é o dia em que você nasceu, minha rainha de cachos.
+    Cada sorriso seu ilumina meus dias, cada abraço seu é meu lar.
+    Obrigado por ser quem você é, por caminhar ao meu lado,
+    por transformar momentos simples em lembranças eternas.
+  </p>
+  <br />
+  <p>
+    Que este novo ano da sua vida venha carregado de sonhos realizados,
+    amor infinito e felicidade sem medida.
+    Eu te amo mais do que palavras podem explicar.
+    Feliz aniversário, meu amor. ❤️
+  </p>
+</div>
+
+<!-- MÚSICA DE FUNDO -->
+<audio id="bgm" autoplay loop hidden>
+  <source src="musica1.mp3" type="audio/mpeg" />
+  <source src="musica2.mp3" type="audio/mpeg" />
+  <source src="musica3.mp3" type="audio/mpeg" />
+</audio>
+
+  </div>  <script>
+    let count = 5;
+    const countdownEl = document.getElementById('countdown');
+    const intro = document.getElementById('intro');
+    const login = document.getElementById('login');
+    const site = document.getElementById('site');
+
+    const timer = setInterval(() => {
+      count--;
+      countdownEl.textContent = count;
+      if (count === 0) {
+        clearInterval(timer);
+        intro.style.display = 'none';
+        login.style.display = 'flex';
+      }
+    }, 1000);
+
+    function checkPassword() {
+      const pass = document.getElementById('password').value.trim();
+      if (btoa(pass) === 'c2FteUxpbmRh') {
+        login.style.display = 'none';
+        site.style.display = 'block';
+      } else {
+        alert('Senha incorreta 😢 Tente novamente.');
+      }
+    }
+  </script></body>
+</html>
